@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="DevTools" t="Include">
+            <e p="Enums" t="Include">
+              <e p="Enums.cs" t="Include" />
+            </e>
+            <e p="FSM" t="Include">
+              <e p="IState.cs" t="Include" />
+              <e p="StateMachine.cs" t="Include" />
+            </e>
+            <e p="Varias" t="Include">
+              <e p="DontDestroy.cs" t="Include" />
+              <e p="Extension.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Managers" t="Include">
+            <e p="Dialogue_Manager.cs" t="Include" />
+            <e p="Event_Manager.cs" t="Include" />
+            <e p="Feedback_Manager.cs" t="Include" />
+            <e p="GameUI_Manager.cs" t="Include" />
+            <e p="Input_Manager.cs" t="Include" />
+            <e p="Main.cs" t="Include" />
+            <e p="Pool_Manager.cs" t="Include" />
+            <e p="Sound_Manager.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Capture the flag. Tp2 IA.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_Capture the flag. Tp2 IA.1563858926.00" t="ExcludeRecursive" />
+  </component>
+</project>
