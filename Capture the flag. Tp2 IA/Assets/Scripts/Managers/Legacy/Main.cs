@@ -5,11 +5,11 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     //Singleton
-    private static Main instance;
+    public static Main instance;
     
     
     //Managers
-     
+    public GameController gameCotroller; 
     
     // Start is called before the first frame update
     void Awake()

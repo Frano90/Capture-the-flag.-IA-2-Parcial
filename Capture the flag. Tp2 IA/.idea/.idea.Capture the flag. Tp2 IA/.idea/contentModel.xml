@@ -5,6 +5,16 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="-Core-" t="Include">
+            <e p="Entities" t="Include">
+              <e p="Base_State.cs" t="Include" />
+              <e p="ChaseFlag_State.cs" t="Include" />
+              <e p="Entity.cs" t="Include" />
+            </e>
+            <e p="GameStuff" t="Include">
+              <e p="Flag.cs" t="Include" />
+            </e>
+          </e>
           <e p="DevTools" t="Include">
             <e p="Brain" t="Include">
               <e p="Brain.cs" t="Include" />
@@ -31,14 +41,17 @@
             </e>
           </e>
           <e p="Managers" t="Include">
-            <e p="Dialogue_Manager.cs" t="Include" />
-            <e p="Event_Manager.cs" t="Include" />
-            <e p="Feedback_Manager.cs" t="Include" />
-            <e p="GameUI_Manager.cs" t="Include" />
-            <e p="Input_Manager.cs" t="Include" />
-            <e p="Main.cs" t="Include" />
-            <e p="Pool_Manager.cs" t="Include" />
-            <e p="Sound_Manager.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="Legacy" t="Include">
+              <e p="Dialogue_Manager.cs" t="Include" />
+              <e p="Event_Manager.cs" t="Include" />
+              <e p="Feedback_Manager.cs" t="Include" />
+              <e p="GameUI_Manager.cs" t="Include" />
+              <e p="Input_Manager.cs" t="Include" />
+              <e p="Main.cs" t="Include" />
+              <e p="Pool_Manager.cs" t="Include" />
+              <e p="Sound_Manager.cs" t="Include" />
+            </e>
           </e>
         </e>
       </e>
