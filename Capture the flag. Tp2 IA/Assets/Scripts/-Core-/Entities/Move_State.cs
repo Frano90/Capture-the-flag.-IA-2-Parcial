@@ -12,20 +12,22 @@ public class Move_State : Base_State
     {
         _flag = Main.instance.gameCotroller.flag;
         _navMeshAgent = _smOwner.GetComponent<NavMeshAgent>();
+        
     }
 
-    public override void OnEnter()
+    public override void OnExit()
     {
-        
+        _navMeshAgent.isStopped = true;
+        _navMeshAgent.ResetPath();
     }
 
     public override void Tick()
     {
-        
+        _navMeshAgent.SetDestination(_flag.transform.position);
     }
 
     public override void TickFixedUpdate()
     {
-        _navMeshAgent.SetDestination(_flag.transform.position);
+        
     }
 }

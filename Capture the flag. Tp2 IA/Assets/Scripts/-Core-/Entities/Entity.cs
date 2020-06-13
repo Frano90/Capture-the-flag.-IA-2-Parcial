@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DevTools.Enums;
+using UnityEngine.AI;
 
 public class Entity : MonoBehaviour
 {
     public StateMachine sm;
+    public Vector3 initPos;
 
     [SerializeField] private Enums.TeamSide _teamSide;
     
@@ -14,6 +16,8 @@ public class Entity : MonoBehaviour
 
     private void Start()
     {
+        initPos = transform.position;
+        
         sm = new StateMachine();
         
         var idle = new Idle_State(this);
@@ -28,7 +32,13 @@ public class Entity : MonoBehaviour
 
     private void Update()
     {
-        if(Main.instance.gameCotroller.IsGameOn)
+        if(Main.instance.gameCotroller.isGameOn)
             sm.Tick();
+    }
+
+    public void ResetEntity()
+    {
+        sm.SetState(statesRegistry[Enums.SM_STATES.Idle]);
+        GetComponent<NavMeshAgent>().Warp(initPos);
     }
 }
