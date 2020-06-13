@@ -14,27 +14,27 @@ public class Brain
    
    private List<CommandSequence> _secuencias;
    
-   private bool canHaveNewInput = true;
    private float _stunBrain_count;
-
    private Action OnRecoverBrainBlock;
-
    private float stunnedTime = 2;
    
    private Dictionary<Enums.INPUT_BRAIN, Command_Base> brain_inputs = new Dictionary<Enums.INPUT_BRAIN, Command_Base>();
+
+   public Vector3 desiredPosToGo;
+   public Entity brainOwner;
    
-   public Brain(List<CommandSequence> secuencias)
+   
+   public Brain(Entity brainOwner) //,List<CommandSequence> secuencias)
    {
       OnRecoverBrainBlock += ResumeThink;
-      
-      _secuencias = secuencias;
+      this.brainOwner = brainOwner;
+      //_secuencias = secuencias;
       currentCommandQueue = new Queue<Command_Base>();
 
 //      Dejo esto para ver como se hace de modelo      
 
 //      var attack = new RivalCommand_Attack(this, DoNextCommandInQueue);
 //      var idle = new RivalCommand_Idle(this, DoNextCommandInQueue, .8f);
-//      var moveL = new RivalCommand_Move(this, DoNextCommandInQueue, Enums.BattlePosition.left);
 //      var moveR = new RivalCommand_Move(this, DoNextCommandInQueue, Enums.BattlePosition.right);
 //      var moveC = new RivalCommand_Move(this, DoNextCommandInQueue, Enums.BattlePosition.center);
       
@@ -44,6 +44,19 @@ public class Brain
 //      brain_inputs.Add(Enums.INPUT_BRAIN.Attack, attack);
 //      brain_inputs.Add(Enums.INPUT_BRAIN.Idle, idle);
 
+      var searchFlag = new SearchFlag_Command(this, DoNextCommandInQueue);
+      var chaseFlag = new ChaseFlag_Command(this, DoNextCommandInQueue);
+      
+      brain_inputs.Add(Enums.INPUT_BRAIN.SearchFlag, searchFlag);
+      brain_inputs.Add(Enums.INPUT_BRAIN.ChaseFlag, chaseFlag);
+      
+      
+      //Prueba
+      var testSecuence = new List<Enums.INPUT_BRAIN>();
+      testSecuence.Add(Enums.INPUT_BRAIN.SearchFlag);
+      testSecuence.Add(Enums.INPUT_BRAIN.ChaseFlag);
+      
+      LoadCommandSequence(testSecuence);
    }
    public void DoNextCommandInQueue()
    {

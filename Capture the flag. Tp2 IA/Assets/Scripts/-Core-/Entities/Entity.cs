@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class Entity : MonoBehaviour
 {
     public StateMachine sm;
+    public Brain brain;
     public Vector3 initPos;
 
     [SerializeField] private Enums.TeamSide _teamSide;
@@ -19,7 +20,7 @@ public class Entity : MonoBehaviour
         initPos = transform.position;
         
         sm = new StateMachine();
-        
+        brain = new Brain(this);
         var idle = new Idle_State(this);
         var move = new Move_State(this);
         
@@ -27,13 +28,16 @@ public class Entity : MonoBehaviour
         statesRegistry.Add(Enums.SM_STATES.Move, move);
         
         sm.SetState(idle);
-        
+        //brain.DoNextCommandInQueue();
     }
 
     private void Update()
     {
-        if(Main.instance.gameCotroller.isGameOn)
+        if (Main.instance.gameCotroller.isGameOn)
+        {
             sm.Tick();
+            //brain.Think();
+        }
     }
 
     public void ResetEntity()

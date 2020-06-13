@@ -5,7 +5,7 @@ namespace DevTools.Enums
     {
         public enum BRAIN_STATES{Normal, Stunned}
         public enum SM_STATES{Idle, Move}
-        public enum INPUT_BRAIN{}
+        public enum INPUT_BRAIN{SearchFlag, ChaseFlag}
         public enum TeamSide{Blue, Red}
     }
 

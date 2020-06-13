@@ -23,6 +23,7 @@ public class Move_State : Base_State
 
     public override void Tick()
     {
+        //_navMeshAgent.SetDestination(_smOwner.brain.desiredPosToGo);
         _navMeshAgent.SetDestination(_flag.transform.position);
     }
 
