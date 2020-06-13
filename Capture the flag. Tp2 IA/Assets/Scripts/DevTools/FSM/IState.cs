@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IState
 {
-    void Start();
+    void OnEnter();
 
-    void Sleep();
+    void OnExit();
 
     void Tick();
 

@@ -11,6 +11,14 @@ public class Entity : MonoBehaviour
     {
         _sm = new StateMachine();
         
+        var chaseFlag = new ChaseFlag_State(this);
         
+        _sm.SetState(chaseFlag);
+        
+    }
+
+    private void Update()
+    {
+        _sm.Tick();
     }
 }
