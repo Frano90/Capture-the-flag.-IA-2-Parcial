@@ -35,6 +35,8 @@ public class SpatialGrid : MonoBehaviour
 
     //Una colección vacía a devolver en las queries si no hay nada que devolver
     readonly public GridEntity[] Empty = new GridEntity[0];
+    
+    List<GridEntity> entidadesEnGrilla = new List<GridEntity>();
     #endregion
 
     #region FUNCIONES
@@ -57,7 +59,24 @@ public class SpatialGrid : MonoBehaviour
         {
             e.OnMove += UpdateEntity;
             UpdateEntity(e);
+            entidadesEnGrilla.Add(e);
         }
+
+
+        StartCoroutine(RefreshGrid());
+    }
+
+    IEnumerator RefreshGrid()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(.02f);
+            foreach (GridEntity e in entidadesEnGrilla)
+            {
+                UpdateEntity(e);
+            }
+        }
+        
     }
 
     public void UpdateEntity(GridEntity entity)
