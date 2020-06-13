@@ -9,6 +9,7 @@ public interface IState
     void OnExit();
 
     void Tick();
+    void TickFixedUpdate();
 
 
 

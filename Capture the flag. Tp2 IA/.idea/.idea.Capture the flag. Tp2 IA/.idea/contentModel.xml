@@ -8,8 +8,9 @@
           <e p="-Core-" t="Include">
             <e p="Entities" t="Include">
               <e p="Base_State.cs" t="Include" />
-              <e p="ChaseFlag_State.cs" t="Include" />
               <e p="Entity.cs" t="Include" />
+              <e p="Idle_State.cs" t="Include" />
+              <e p="Move_State.cs" t="Include" />
             </e>
             <e p="GameStuff" t="Include">
               <e p="Flag.cs" t="Include" />

@@ -39,6 +39,7 @@ public class StateMachine
         
 
         _currentState?.Tick();
+        _currentState?.TickFixedUpdate();
     }
 
     public void SetState(IState state)

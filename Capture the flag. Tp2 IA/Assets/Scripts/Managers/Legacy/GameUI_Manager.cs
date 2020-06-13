@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI_Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Button startButton;
+    
     void Start()
     {
-        
+        startButton.onClick.AddListener(StartSimulation);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void StartSimulation() => Main.instance.gameCotroller.StartSimulation();
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using DevTools.Enums;
 
-[CreateAssetMenu(fileName = "New CommandSequence", menuName = "Rival/ComantSequence")]
 public class CommandSequence : ScriptableObject
 {
     public string commandName;

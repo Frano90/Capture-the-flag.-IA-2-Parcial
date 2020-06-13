@@ -2,23 +2,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DevTools.Enums;
 
 public class Entity : MonoBehaviour
 {
-    private StateMachine _sm;
+    public StateMachine sm;
+
+    [SerializeField] private Enums.TeamSide _teamSide;
+    
+    public Dictionary<Enums.SM_STATES, Base_State> statesRegistry = new Dictionary<Enums.SM_STATES, Base_State>();
 
     private void Start()
     {
-        _sm = new StateMachine();
+        sm = new StateMachine();
         
-        var chaseFlag = new ChaseFlag_State(this);
+        var idle = new Idle_State(this);
+        var move = new Move_State(this);
         
-        _sm.SetState(chaseFlag);
+        statesRegistry.Add(Enums.SM_STATES.Idle, idle);
+        statesRegistry.Add(Enums.SM_STATES.Move, move);
+        
+        sm.SetState(idle);
         
     }
 
     private void Update()
     {
-        _sm.Tick();
+        if(Main.instance.gameCotroller.IsGameOn)
+            sm.Tick();
     }
 }
