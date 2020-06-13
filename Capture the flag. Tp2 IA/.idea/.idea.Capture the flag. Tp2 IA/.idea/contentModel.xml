@@ -6,12 +6,24 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="DevTools" t="Include">
+            <e p="Brain" t="Include">
+              <e p="Brain.cs" t="Include" />
+              <e p="Command_Base.cs" t="Include" />
+              <e p="CommandSequence.cs" t="Include" />
+            </e>
             <e p="Enums" t="Include">
               <e p="Enums.cs" t="Include" />
             </e>
             <e p="FSM" t="Include">
               <e p="IState.cs" t="Include" />
               <e p="StateMachine.cs" t="Include" />
+            </e>
+            <e p="SpatialGrid" t="Include">
+              <e p="FList.cs" t="Include" />
+              <e p="GridEntity.cs" t="Include" />
+              <e p="Queries.cs" t="Include" />
+              <e p="SpatialGrid.cs" t="Include" />
+              <e p="Utility.cs" t="Include" />
             </e>
             <e p="Varias" t="Include">
               <e p="DontDestroy.cs" t="Include" />
