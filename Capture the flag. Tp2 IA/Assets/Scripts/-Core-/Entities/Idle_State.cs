@@ -17,12 +17,12 @@ public class Idle_State : Base_State
 
     public override void Tick()
     {
-        _count -= Time.deltaTime;
+        //_count -= Time.deltaTime;
 
-        if (_count <= 0)
-        {
-            _count = 2;
-            _smOwner.sm.SetState(_smOwner.statesRegistry[Enums.SM_STATES.Move]);
-        }
+//        if (_count <= 0)
+//        {
+//            _count = 2;
+//            _smOwner.sm.SetState(_smOwner.statesRegistry[Enums.SM_STATES.Move]);
+//        }
     }
 }

@@ -14,7 +14,13 @@ public class ChaseFlag_Command : Command_Base
 
     public override void Execute()
     {
-        
+        _brain.desiredPosToGo = _flag.transform.position;
+
+        if (Vector3.Distance(_brain.desiredPosToGo, _brain.brainOwner.transform.position) <= .3f)
+        {
+            OnFinishCommand?.Invoke();
+            return;
+        }
     }
 
     public override void Init(Brain brain, Action callback)

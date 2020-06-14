@@ -15,8 +15,20 @@ public class Entity : MonoBehaviour
     
     public Dictionary<Enums.SM_STATES, Base_State> statesRegistry = new Dictionary<Enums.SM_STATES, Base_State>();
 
+    public Transform exitBasePos; 
+    
     private void Start()
     {
+        //Setea la salida
+        if (_teamSide == Enums.TeamSide.Blue)
+        {
+            exitBasePos = Main.instance.gameCotroller.blueExitPos;
+        }
+        else
+        {
+            exitBasePos = Main.instance.gameCotroller.redExitPos;
+        }
+        
         initPos = transform.position;
         
         sm = new StateMachine();
@@ -28,7 +40,7 @@ public class Entity : MonoBehaviour
         statesRegistry.Add(Enums.SM_STATES.Move, move);
         
         sm.SetState(idle);
-        //brain.DoNextCommandInQueue();
+        brain.DoNextCommandInQueue();
     }
 
     private void Update()
@@ -36,7 +48,7 @@ public class Entity : MonoBehaviour
         if (Main.instance.gameCotroller.isGameOn)
         {
             sm.Tick();
-            //brain.Think();
+            brain.Think();
         }
     }
 

@@ -24,6 +24,8 @@ public class Brain
    public Entity brainOwner;
    
    
+   
+   
    public Brain(Entity brainOwner) //,List<CommandSequence> secuencias)
    {
       OnRecoverBrainBlock += ResumeThink;
@@ -46,13 +48,16 @@ public class Brain
 
       var searchFlag = new SearchFlag_Command(this, DoNextCommandInQueue);
       var chaseFlag = new ChaseFlag_Command(this, DoNextCommandInQueue);
+      var outOfBase = new GetOutOfBase_Command(this, DoNextCommandInQueue);
       
       brain_inputs.Add(Enums.INPUT_BRAIN.SearchFlag, searchFlag);
       brain_inputs.Add(Enums.INPUT_BRAIN.ChaseFlag, chaseFlag);
+      brain_inputs.Add(Enums.INPUT_BRAIN.OutOfBase, outOfBase);
       
       
       //Prueba
       var testSecuence = new List<Enums.INPUT_BRAIN>();
+      testSecuence.Add(Enums.INPUT_BRAIN.OutOfBase);
       testSecuence.Add(Enums.INPUT_BRAIN.SearchFlag);
       testSecuence.Add(Enums.INPUT_BRAIN.ChaseFlag);
       
@@ -64,6 +69,7 @@ public class Brain
       {
          currentCommand = currentCommandQueue.Dequeue();
          currentCommand.Init(this,DoNextCommandInQueue);
+         Debug.Log(currentCommand.ToString());
       }
       else
       {

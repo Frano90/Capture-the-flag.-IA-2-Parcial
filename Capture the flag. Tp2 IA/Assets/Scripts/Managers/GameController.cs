@@ -8,7 +8,10 @@ public class GameController : MonoBehaviour
 {
     public Flag flag;
     public List<Entity> entidades = new List<Entity>();
-    public bool isGameOn = false; 
+    public bool isGameOn = false;
+
+    public Transform blueExitPos;
+    public Transform redExitPos;
     public event Action OnStartSimulation = delegate {  };
 
     private void Start()
