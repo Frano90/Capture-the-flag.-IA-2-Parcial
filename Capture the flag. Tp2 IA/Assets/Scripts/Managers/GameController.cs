@@ -10,10 +10,14 @@ public class GameController : MonoBehaviour
     public List<Entity> entidades = new List<Entity>();
     public bool isGameOn = false;
 
+    [Header("Initial position settings")]
     public Transform blueExitPos;
     public Transform redExitPos;
     public Transform redBasePos;
     public Transform blueBasePos;
+
+    public Entity flagHolder;
+    public bool isFlagGrabbed = false;
     public event Action OnStartSimulation = delegate {  };
 
     private void Start()

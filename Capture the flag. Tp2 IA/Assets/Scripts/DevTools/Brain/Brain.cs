@@ -87,8 +87,8 @@ public class Brain
    void ResetBrain()
    {
       currentBrainState = Enums.BRAIN_STATES.Stunned;
-      currentCommand = null;
-      currentCommandQueue.Clear();
+      //currentCommand = null;
+      //currentCommandQueue.Clear();
    }
 
    public void ResumeThink()
@@ -102,15 +102,8 @@ public class Brain
    public void Think()
    {
       if (currentBrainState == Enums.BRAIN_STATES.Stunned)
-      {
-         _stunBrain_count += Time.deltaTime;
-         if (_stunBrain_count >= stunnedTime)
-         {
-            _stunBrain_count = 0;
-            OnRecoverBrainBlock?.Invoke();
-            return;
-         } 
-      }
+         return;
+      
       
       currentCommand?.Execute();
    }
