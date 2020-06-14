@@ -16,8 +16,10 @@ public class ChaseFlag_Command : Command_Base
     {
         _brain.desiredPosToGo = _flag.transform.position;
 
-        if (Vector3.Distance(_brain.desiredPosToGo, _brain.brainOwner.transform.position) <= .3f)
+        Debug.Log("rrrr");
+        if (Vector3.Distance(_brain.desiredPosToGo, _brain.brainOwner.transform.position) <= 3f)
         {
+            Debug.Log("entro");
             OnFinishCommand?.Invoke();
             return;
         }

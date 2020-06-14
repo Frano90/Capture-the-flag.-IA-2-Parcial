@@ -49,10 +49,12 @@ public class Brain
       var searchFlag = new SearchFlag_Command(this, DoNextCommandInQueue);
       var chaseFlag = new ChaseFlag_Command(this, DoNextCommandInQueue);
       var outOfBase = new GetOutOfBase_Command(this, DoNextCommandInQueue);
+      var returnWithFlag = new ReturnWithFlag_Command(this, DoNextCommandInQueue);
       
       brain_inputs.Add(Enums.INPUT_BRAIN.SearchFlag, searchFlag);
       brain_inputs.Add(Enums.INPUT_BRAIN.ChaseFlag, chaseFlag);
       brain_inputs.Add(Enums.INPUT_BRAIN.OutOfBase, outOfBase);
+      brain_inputs.Add(Enums.INPUT_BRAIN.ReturnWithFlag, returnWithFlag);
       
       
       //Prueba
@@ -60,6 +62,7 @@ public class Brain
       testSecuence.Add(Enums.INPUT_BRAIN.OutOfBase);
       testSecuence.Add(Enums.INPUT_BRAIN.SearchFlag);
       testSecuence.Add(Enums.INPUT_BRAIN.ChaseFlag);
+      testSecuence.Add(Enums.INPUT_BRAIN.ReturnWithFlag);
       
       LoadCommandSequence(testSecuence);
    }

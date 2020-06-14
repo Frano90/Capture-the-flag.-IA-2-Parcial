@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
 
     public Transform blueExitPos;
     public Transform redExitPos;
+    public Transform redBasePos;
+    public Transform blueBasePos;
     public event Action OnStartSimulation = delegate {  };
 
     private void Start()

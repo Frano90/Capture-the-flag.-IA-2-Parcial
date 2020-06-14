@@ -15,7 +15,8 @@ public class Entity : MonoBehaviour
     
     public Dictionary<Enums.SM_STATES, Base_State> statesRegistry = new Dictionary<Enums.SM_STATES, Base_State>();
 
-    public Transform exitBasePos; 
+    public Transform exitBasePos;
+    public Transform basePos;
     
     private void Start()
     {
@@ -23,10 +24,12 @@ public class Entity : MonoBehaviour
         if (_teamSide == Enums.TeamSide.Blue)
         {
             exitBasePos = Main.instance.gameCotroller.blueExitPos;
+            basePos = Main.instance.gameCotroller.blueBasePos;
         }
         else
         {
             exitBasePos = Main.instance.gameCotroller.redExitPos;
+            basePos = Main.instance.gameCotroller.redBasePos;
         }
         
         initPos = transform.position;
