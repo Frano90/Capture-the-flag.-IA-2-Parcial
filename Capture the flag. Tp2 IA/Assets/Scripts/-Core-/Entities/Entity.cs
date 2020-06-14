@@ -44,6 +44,7 @@ public class Entity : MonoBehaviour
         var chaseFlag = new ChaseFlag_State(this);
         var carryFlag = new CarryFlagToBase_State(this);
         
+        
         statesRegistry.Add(Enums.SM_STATES.Idle, idle);
         statesRegistry.Add(Enums.SM_STATES.Move, move);
         statesRegistry.Add(Enums.SM_STATES.Stunned, stunned);

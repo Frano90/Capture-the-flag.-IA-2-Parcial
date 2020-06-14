@@ -36,7 +36,7 @@ public class SpatialGrid : MonoBehaviour
     //Una colección vacía a devolver en las queries si no hay nada que devolver
     readonly public GridEntity[] Empty = new GridEntity[0];
     
-    List<GridEntity> entidadesEnGrilla = new List<GridEntity>();
+    public List<GridEntity> entidadesEnGrilla = new List<GridEntity>();
     #endregion
 
     #region FUNCIONES

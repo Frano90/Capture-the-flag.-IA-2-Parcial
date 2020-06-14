@@ -12,7 +12,7 @@ public class Queries : MonoBehaviour
     public float height = 30f;
     public IEnumerable<GridEntity> selected = new List<GridEntity>();
 
-    public IEnumerable<GridEntity> Query()
+    public IEnumerable<GridEntity> Query(Transform clickPos)
     {
         if (isBox)
         {
@@ -22,16 +22,16 @@ public class Queries : MonoBehaviour
             //posición final --> esquina inferior derecha de la "caja"
             //como funcion para filtrar le damos una que siempre devuelve true, para que no filtre nada.
             return targetGrid.Query(
-                transform.position + new Vector3(-w, 0, -h),
-                transform.position + new Vector3(w, 0, h),
+                clickPos.position + new Vector3(-w, 0, -h),
+                clickPos.position + new Vector3(w, 0, h),
                 x => true);
         }
         else
         {
             //creo una "caja" con las dimensiones deseadas, y luego filtro segun distancia para formar el círculo
             return targetGrid.Query(
-                transform.position + new Vector3(-radius, 0, -radius),
-                transform.position + new Vector3(radius, 0, radius),
+                clickPos.position + new Vector3(-radius, 0, -radius),
+                clickPos.position + new Vector3(radius, 0, radius),
                 x => {
                     var position2d = x - transform.position;
                     position2d.y = 0;
@@ -57,14 +57,17 @@ public class Queries : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            selected = Query();
-            var temp = FindObjectsOfType<GridEntity>().Where(x=>!selected.Contains(x));
+            selected = Query(transform);
+            //var temp = FindObjectsOfType<GridEntity>().Where(x=>!selected.Contains(x));
+            var temp = targetGrid.entidadesEnGrilla.Where(x => !selected.Contains(x));
             foreach (var item in temp)
             {
                 item.onGrid = false;
             }
             foreach (var item in selected)
             {
+                //aca va la explosion
+                //item.getcomp<Entity>().stun();
                 item.onGrid = true;
             }
 

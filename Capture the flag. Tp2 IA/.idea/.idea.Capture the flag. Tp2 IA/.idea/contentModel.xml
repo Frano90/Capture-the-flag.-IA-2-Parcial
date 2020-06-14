@@ -11,6 +11,7 @@
               <e p="CarryFlagToBase_State.cs" t="Include" />
               <e p="ChaseFlag_Command.cs" t="Include" />
               <e p="ChaseFlag_State.cs" t="Include" />
+              <e p="Death_State.cs" t="Include" />
               <e p="Entity.cs" t="Include" />
               <e p="GetOutOfBase_Command.cs" t="Include" />
               <e p="Idle_State.cs" t="Include" />

@@ -310,6 +310,7 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   _teamSide: 0
   debugState: {fileID: 3182408678662431737}
+  currentState: 
   exitBasePos: {fileID: 0}
   basePos: {fileID: 0}
   isStunned: 0
