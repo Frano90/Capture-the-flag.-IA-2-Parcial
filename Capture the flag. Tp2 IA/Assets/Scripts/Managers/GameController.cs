@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public Flag flag;
     public List<Entity> entidades = new List<Entity>();
     public bool isGameOn = false;
+    public Queries grid;
 
     [Header("Initial position settings")]
     public Transform blueExitPos;

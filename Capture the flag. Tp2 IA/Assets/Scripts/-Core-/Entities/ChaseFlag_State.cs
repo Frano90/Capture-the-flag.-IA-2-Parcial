@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,9 +8,11 @@ public class ChaseFlag_State : Base_State
 {
     private Flag _flag;
     private NavMeshAgent _navMeshAgent;
+   
     
     public ChaseFlag_State(Entity smOwner) : base(smOwner)
     {
+        
     }
 
     public override void OnEnter()
@@ -33,13 +36,16 @@ public class ChaseFlag_State : Base_State
             {
                 Main.instance.gameCotroller.flagHolder = _smOwner;
                 _flag.transform.SetParent(_smOwner.transform);
-                _smOwner.hasFlag = true;    
+                _smOwner.hasFlag = true;
             }
             else if(Main.instance.gameCotroller.flagHolder._teamSide != _smOwner._teamSide)
             {
                 Main.instance.gameCotroller.flagHolder.Stun();
             }
             
+            
         }
     }
+
+    
 }

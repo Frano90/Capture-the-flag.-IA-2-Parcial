@@ -16,6 +16,7 @@
               <e p="GetOutOfBase_Command.cs" t="Include" />
               <e p="Idle_State.cs" t="Include" />
               <e p="Move_State.cs" t="Include" />
+              <e p="ProtectFlagCarrier_State.cs" t="Include" />
               <e p="ReturnWithFlag_Command.cs" t="Include" />
               <e p="SearchFlag_Command.cs" t="Include" />
               <e p="SearchForFlag_State.cs" t="Include" />

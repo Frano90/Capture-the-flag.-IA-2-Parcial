@@ -59,7 +59,6 @@ public class SpatialGrid : MonoBehaviour
         {
             e.OnMove += UpdateEntity;
             UpdateEntity(e);
-            entidadesEnGrilla.Add(e);
         }
 
 
@@ -97,9 +96,14 @@ public class SpatialGrid : MonoBehaviour
         {
             buckets[currentPos.Item1, currentPos.Item2].Add(entity);
             lastPositions[entity] = currentPos;
+            entidadesEnGrilla.Add(entity);
         }
         else
+        {
+            entidadesEnGrilla.Remove(entity);
             lastPositions.Remove(entity);
+        }
+            
     }
 
     public IEnumerable<GridEntity> Query(Vector3 aabbFrom, Vector3 aabbTo, Func<Vector3, bool> filterByPosition)

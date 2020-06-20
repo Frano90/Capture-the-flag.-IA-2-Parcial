@@ -14,7 +14,7 @@ public class SearchForFlag_State : Base_State
     public override void OnEnter()
     {
         _flag = Main.instance.gameCotroller.flag;
-        Debug.Log("entro aca");
+//        Debug.Log("entro aca");
         //_smOwner.desiredPos = GetPosRandom(40, _smOwner.transform);
 
         

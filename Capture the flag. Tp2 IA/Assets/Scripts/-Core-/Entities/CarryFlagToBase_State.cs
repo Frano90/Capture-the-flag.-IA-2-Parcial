@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class CarryFlagToBase_State : Base_State
 {
     private NavMeshAgent _navMeshAgent;
+
+    private float speed;
     public CarryFlagToBase_State(Entity smOwner) : base(smOwner)
     {
     }
@@ -15,6 +17,13 @@ public class CarryFlagToBase_State : Base_State
         _smOwner.desiredPos = _smOwner.basePos.position;
         _smOwner.GetComponent<NavMeshAgent>().SetDestination(_smOwner.desiredPos);
         _navMeshAgent = _smOwner.GetComponent<NavMeshAgent>();
+        speed = _navMeshAgent.speed;
+        _navMeshAgent.speed = speed * .5f;
+    }
+
+    public override void OnExit()
+    {
+        _navMeshAgent.speed = speed;
     }
 
     public override void Tick()

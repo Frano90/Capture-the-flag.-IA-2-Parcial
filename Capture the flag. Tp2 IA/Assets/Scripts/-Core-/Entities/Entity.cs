@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     public Vector3 initPos;
 
     public Enums.TeamSide _teamSide;
+    public float lookRange;
     
     public Dictionary<Enums.SM_STATES, Base_State> statesRegistry = new Dictionary<Enums.SM_STATES, Base_State>();
 
@@ -43,6 +44,7 @@ public class Entity : MonoBehaviour
         var searchFlag = new SearchForFlag_State(this);
         var chaseFlag = new ChaseFlag_State(this);
         var carryFlag = new CarryFlagToBase_State(this);
+        //var protectFlagCarrier = new ProtectFlagCarrier_State(this);
         
         
         statesRegistry.Add(Enums.SM_STATES.Idle, idle);
@@ -51,6 +53,7 @@ public class Entity : MonoBehaviour
         statesRegistry.Add(Enums.SM_STATES.SearchFlag, searchFlag);
         statesRegistry.Add(Enums.SM_STATES.ChaseFlag, chaseFlag);
         statesRegistry.Add(Enums.SM_STATES.CarryFlagToBase, carryFlag);
+        //statesRegistry.Add(Enums.SM_STATES.ProtectFlagCarrier, protectFlagCarrier);
 
         
         At(searchFlag, move, ImStillSearching());
@@ -58,8 +61,9 @@ public class Entity : MonoBehaviour
         At(chaseFlag, carryFlag, HasFlag());
         At(carryFlag, searchFlag, ImStillSearching());
         At(stunned, searchFlag, ImStillSearching());
+        //At(chaseFlag, protectFlagCarrier, ProtectCarrier());
+        //At(protectFlagCarrier, searchFlag, ImStillSearching());
         
-        //At(move, searchFlag, FinishMomevent());
         
         void At(IState from, IState to, Func<bool> condition) => sm.AddTransition(from, to, condition);
 
@@ -69,6 +73,7 @@ public class Entity : MonoBehaviour
         Func<bool> FinishMomevent() => () => GetComponent<NavMeshAgent>().velocity == Vector3.zero;
         Func<bool> FindFlag() => () => knowsWhereFlagIs == true && hasFlag == false && isStunned == false;
         Func<bool> HasFlag() => () => hasFlag == true;
+        //Func<bool> ProtectCarrier() => () => (knowsWhereFlagIs == true && hasFlag == false && isStunned == false && teamHasdFlag); 
         
         
         sm.AddAnyTransition(stunned, IsStunned());
@@ -120,4 +125,7 @@ public class Entity : MonoBehaviour
         knowsWhereFlagIs = false;
         //sm.SetState(statesRegistry[Enums.SM_STATES.Stunned]);
     }
+
+
+    
 }

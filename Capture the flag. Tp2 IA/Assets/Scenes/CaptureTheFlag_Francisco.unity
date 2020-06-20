@@ -314,6 +314,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
+        type: 3}
+      propertyPath: lookRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
 --- !u!1001 &45745844
@@ -402,6 +407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _teamSide
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
+        type: 3}
+      propertyPath: lookRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -1557,6 +1567,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
+        type: 3}
+      propertyPath: lookRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
 --- !u!1 &1019986645
@@ -1694,6 +1709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203808715}
   - component: {fileID: 1203808716}
+  - component: {fileID: 1203808717}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -1734,15 +1750,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baa808c8acf34833955ca43edcaa80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: -25
-  z: -25
+  x: -40
+  z: -30
   cellWidth: 5
   cellHeight: 5
-  width: 10
-  height: 10
+  width: 15
+  height: 15
+  entidadesEnGrilla: []
   AreGizmosShutDown: 0
   activatedGrid: 0
   showLogs: 1
+--- !u!114 &1203808717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203808714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a99209537bc4c4799357cc753b259d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBox: 0
+  radius: 20
+  targetGrid: {fileID: 1203808716}
+  width: 15
+  height: 30
 --- !u!1001 &1233027201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,6 +1863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _teamSide
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
+        type: 3}
+      propertyPath: lookRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -2040,6 +2079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _teamSide
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
+        type: 3}
+      propertyPath: lookRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -2799,6 +2843,7 @@ MonoBehaviour:
   flag: {fileID: 390187880}
   entidades: []
   isGameOn: 0
+  grid: {fileID: 1203808717}
   blueExitPos: {fileID: 67109398}
   redExitPos: {fileID: 145191697}
   redBasePos: {fileID: 1771661614}
@@ -3757,6 +3802,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Entity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
+        type: 3}
+      propertyPath: lookRange
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8958397134543751439, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
