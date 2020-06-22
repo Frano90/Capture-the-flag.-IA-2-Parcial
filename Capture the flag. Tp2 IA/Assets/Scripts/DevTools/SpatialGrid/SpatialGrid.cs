@@ -70,7 +70,6 @@ public class SpatialGrid : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(entidadesEnGrilla.Count);
             yield return new WaitForSeconds(.02f);
             foreach (GridEntity e in entidadesEnGrilla)
             {

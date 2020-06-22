@@ -42,10 +42,18 @@ public class GameController : MonoBehaviour
         {
             foreach (Entity e in entidades)
             {
-                e.ResetEntity();
+                e.ResetEntityWithPos();
             }    
         }
         
+    }
+
+    public void OnFlagToBase()
+    {
+        foreach (Entity e in entidades)
+        {
+            e.ResetEntitySM();
+        }  
     }
     
     public void StartSimulation() => OnStartSimulation?.Invoke();

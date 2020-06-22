@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour
         var searchFlag = new SearchForFlag_State(this);
         var chaseFlag = new ChaseFlag_State(this);
         var carryFlag = new CarryFlagToBase_State(this);
-        //var protectFlagCarrier = new ProtectFlagCarrier_State(this);
+        var protectFlagCarrier = new ProtectFlagCarrier_State(this);
         
         
         statesRegistry.Add(Enums.SM_STATES.Idle, idle);
@@ -53,7 +53,7 @@ public class Entity : MonoBehaviour
         statesRegistry.Add(Enums.SM_STATES.SearchFlag, searchFlag);
         statesRegistry.Add(Enums.SM_STATES.ChaseFlag, chaseFlag);
         statesRegistry.Add(Enums.SM_STATES.CarryFlagToBase, carryFlag);
-        //statesRegistry.Add(Enums.SM_STATES.ProtectFlagCarrier, protectFlagCarrier);
+        statesRegistry.Add(Enums.SM_STATES.ProtectFlagCarrier, protectFlagCarrier);
 
         
         At(searchFlag, move, ImStillSearching());
@@ -61,29 +61,30 @@ public class Entity : MonoBehaviour
         At(chaseFlag, carryFlag, HasFlag());
         At(carryFlag, searchFlag, ImStillSearching());
         At(stunned, searchFlag, ImStillSearching());
+        
         //At(chaseFlag, protectFlagCarrier, ProtectCarrier());
-        //At(protectFlagCarrier, searchFlag, ImStillSearching());
+        At(protectFlagCarrier, searchFlag, ImStillSearching());
         
         
         void At(IState from, IState to, Func<bool> condition) => sm.AddTransition(from, to, condition);
 
         
-        Func<bool> IsStunned() => () => isStunned == true;
+        Func<bool> IsStunned() => () => isStunned;
         Func<bool> ImStillSearching() => () => knowsWhereFlagIs == false && hasFlag == false && isStunned == false;
         Func<bool> FinishMomevent() => () => GetComponent<NavMeshAgent>().velocity == Vector3.zero;
-        Func<bool> FindFlag() => () => knowsWhereFlagIs == true && hasFlag == false && isStunned == false;
-        Func<bool> HasFlag() => () => hasFlag == true;
-        //Func<bool> ProtectCarrier() => () => (knowsWhereFlagIs == true && hasFlag == false && isStunned == false && teamHasdFlag); 
+        Func<bool> FindFlag() => () => knowsWhereFlagIs  && hasFlag == false && isStunned == false && sm.CurrentState != protectFlagCarrier;
+        Func<bool> HasFlag() => () => hasFlag;
+
+//        Func<bool> ProtectCarrier() => () =>
+//            (knowsWhereFlagIs && hasFlag == false && isStunned == false &&
+//             Main.instance.gameCotroller.flagHolder._teamSide == _teamSide); 
         
         
         sm.AddAnyTransition(stunned, IsStunned());
         sm.AddAnyTransition(chaseFlag, FindFlag());
         
         
-        
-        
         sm.SetState(searchFlag);
-        //brain.DoNextCommandInQueue();
     }
 
     void SetTeamData()
@@ -111,11 +112,20 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void ResetEntity()
+    public void ResetEntityWithPos()
     {
         sm.SetState(statesRegistry[Enums.SM_STATES.SearchFlag]);
         GetComponent<NavMeshAgent>().Warp(initPos);
     }
+
+    public void ResetEntitySM()
+    {
+        sm.SetState(statesRegistry[Enums.SM_STATES.SearchFlag]);
+        knowsWhereFlagIs = false;
+        isStunned = false;
+        hasFlag = false;
+    }
+    
 
     public void Stun()
     {
@@ -126,6 +136,9 @@ public class Entity : MonoBehaviour
         //sm.SetState(statesRegistry[Enums.SM_STATES.Stunned]);
     }
 
-
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lookRange);
+    }
 }

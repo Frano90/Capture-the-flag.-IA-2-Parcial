@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DevTools.Enums;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +21,7 @@ public class ChaseFlag_State : Base_State
         _flag = Main.instance.gameCotroller.flag;
         _navMeshAgent = _smOwner.GetComponent<NavMeshAgent>();
 
-        
+        //Debug.Log("estasdfadfa");
     }
 
     public override void Tick()
@@ -29,8 +30,8 @@ public class ChaseFlag_State : Base_State
         
         _navMeshAgent.SetDestination(_smOwner.desiredPos);
         
-        //Si encuentro la bandera
-        if (Vector3.Distance(_flag.transform.position, _smOwner.transform.position) <= 2)
+        //Si llego a la bandera
+        if (Vector3.Distance(_flag.transform.position, _smOwner.transform.position) <= 4)
         {
             if (Main.instance.gameCotroller.flagHolder == null )
             {
@@ -41,6 +42,10 @@ public class ChaseFlag_State : Base_State
             else if(Main.instance.gameCotroller.flagHolder._teamSide != _smOwner._teamSide)
             {
                 Main.instance.gameCotroller.flagHolder.Stun();
+            }
+            else
+            {
+                _smOwner.sm.SetState(_smOwner.statesRegistry[Enums.SM_STATES.ProtectFlagCarrier]);
             }
             
             
