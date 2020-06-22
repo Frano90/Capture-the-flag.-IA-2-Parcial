@@ -57,8 +57,9 @@ public class SpatialGrid : MonoBehaviour
 
         foreach (var e in ents)
         {
-            e.OnMove += UpdateEntity;
+            //e.OnMove += UpdateEntity;
             UpdateEntity(e);
+            //entidadesEnGrilla.Add(e);
         }
 
 
@@ -69,6 +70,7 @@ public class SpatialGrid : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log(entidadesEnGrilla.Count);
             yield return new WaitForSeconds(.02f);
             foreach (GridEntity e in entidadesEnGrilla)
             {
@@ -96,11 +98,15 @@ public class SpatialGrid : MonoBehaviour
         {
             buckets[currentPos.Item1, currentPos.Item2].Add(entity);
             lastPositions[entity] = currentPos;
-            entidadesEnGrilla.Add(entity);
+            
+            if(!entidadesEnGrilla.Contains(entity))
+                entidadesEnGrilla.Add(entity);
         }
         else
         {
-            entidadesEnGrilla.Remove(entity);
+            if(entidadesEnGrilla.Contains(entity))
+             entidadesEnGrilla.Remove(entity);
+            
             lastPositions.Remove(entity);
         }
             
