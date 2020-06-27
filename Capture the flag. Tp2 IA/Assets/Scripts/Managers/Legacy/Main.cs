@@ -6,8 +6,8 @@ public class Main : MonoBehaviour
 {
     //Singleton
     public static Main instance;
-    
-    
+
+
     //Managers
     public GameController gameCotroller; 
     

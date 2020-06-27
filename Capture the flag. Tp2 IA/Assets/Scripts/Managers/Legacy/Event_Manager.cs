@@ -5,14 +5,10 @@ using UnityEngine;
 public class Event_Manager : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Queries query;
 
-    // Update is called once per frame
-    void Update()
+    public void StartRaycast(bool cooldown)
     {
-        
+        query.RayFromCamera(cooldown);
     }
 }

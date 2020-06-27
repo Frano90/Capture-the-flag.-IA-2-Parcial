@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DevTools.Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DevTools.Enums;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -23,7 +23,14 @@ public class Entity : MonoBehaviour
     
     public Transform exitBasePos;
     public Transform basePos;
-    
+
+    Rigidbody rb;
+    NavMeshAgent _navMeshAgent;
+    int _initialSpeed;
+
+    public ParticleSystem stunedParticle;
+
+
     //State
     public bool isStunned = false;
     public Vector3 desiredPos;
@@ -32,7 +39,10 @@ public class Entity : MonoBehaviour
     private void Start()
     {
         SetTeamData();
-        
+
+        rb = this.gameObject.GetComponent<Rigidbody>();
+        _initialSpeed = 10;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         initPos = transform.position;
         sm = new StateMachine();
         
@@ -142,14 +152,53 @@ public class Entity : MonoBehaviour
     /// </summary>
     public void Stun()
     {
+        Debug.Log("Stuneado");
         isStunned = true;
         Main.instance.gameCotroller.flagHolder = null;
         hasFlag = false;
         knowsWhereFlagIs = false;
+        stunedParticle.Play();
         //sm.SetState(statesRegistry[Enums.SM_STATES.Stunned]);
     }
 
-    private void OnDrawGizmos()
+    public void ChangeColour()
+    {
+        
+    }
+
+    public void Slow()
+    {
+        Debug.Log("relenzito");
+        _navMeshAgent.speed = 3;
+        StartCoroutine(ResetSpeed());
+    }
+
+    public void Explosion(Transform trans,bool activeRB)
+    {
+        StatusRB(activeRB);
+        var direction = transform.position - trans.position;
+        rb.AddForce(direction.normalized * 20, ForceMode.Impulse);
+        StartCoroutine(TurnOffRB(true));
+    }
+
+    IEnumerator TurnOffRB(bool status)
+    {
+        yield return new WaitForSeconds(1);
+        rb.isKinematic = status;
+    }
+
+    public void StatusRB(bool status)
+    {
+        rb.isKinematic = status;
+    }
+
+IEnumerator ResetSpeed()
+    {
+        yield return new WaitForSeconds(3.0f);
+        _navMeshAgent.speed = _initialSpeed;
+    }
+
+private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRange);

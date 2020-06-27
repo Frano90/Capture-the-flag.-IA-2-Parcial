@@ -7,6 +7,12 @@ namespace DevTools.Enums
         public enum SM_STATES{Idle, Move, Stunned, SearchFlag, ChaseFlag, CarryFlagToBase, ProtectFlagCarrier}
         public enum INPUT_BRAIN{SearchFlag, ChaseFlag, OutOfBase, ReturnWithFlag}
         public enum TeamSide{Blue, Red}
+
+        public enum TeamToHelp { Blue, Red}
+
+        //public enum ClickPower {  DoubleStun /*concat*/
+        //                        , StunFlag
+        //                          }
     }
 
 }
