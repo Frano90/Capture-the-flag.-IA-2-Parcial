@@ -317,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
       propertyPath: lookRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -411,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
       propertyPath: lookRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -1570,7 +1570,7 @@ PrefabInstance:
     - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
       propertyPath: lookRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -1750,12 +1750,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baa808c8acf34833955ca43edcaa80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: -40
+  x: -50
   z: -30
   cellWidth: 5
   cellHeight: 5
-  width: 15
-  height: 15
+  width: 20
+  height: 20
   entidadesEnGrilla: []
   AreGizmosShutDown: 0
   activatedGrid: 0
@@ -1867,7 +1867,7 @@ PrefabInstance:
     - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
       propertyPath: lookRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -2083,7 +2083,7 @@ PrefabInstance:
     - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
       propertyPath: lookRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6302f8cc17b6f4863945f7b14fea080b, type: 3}
@@ -3806,7 +3806,7 @@ PrefabInstance:
     - target: {fileID: 8958397134543751436, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
       propertyPath: lookRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8958397134543751439, guid: 6302f8cc17b6f4863945f7b14fea080b,
         type: 3}
