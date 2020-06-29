@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
 
     public Entity flagHolder;
     public bool isFlagGrabbed = false;
+
+    private int redScore;
+    private int blueScore;
     public event Action OnStartSimulation = delegate {  };
     
 
@@ -50,13 +53,37 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void OnFlagToBase()
+    public void OnFlagToBase(Entity ent)
     {
+        if (ent._teamSide == Enums.TeamSide.Blue)
+        {
+            blueScore++;
+            
+        }
+        else
+        {
+            redScore++;
+        }
+        
         foreach (Entity e in entidades)
         {
             e.ResetEntitySM();
-        }  
+        }
+
+        Main.instance.uiManager.RefreshScore(Tuple.Create(redScore, blueScore));
     }
     
-    public void StartSimulation() => OnStartSimulation?.Invoke();
+    public void StartSimulation()
+    {
+        ResetScore();
+        OnStartSimulation?.Invoke();
+    }
+    
+    void ResetScore ()
+    {
+        blueScore = 0;
+        redScore = 0;
+        
+        Main.instance.uiManager.RefreshScore(Tuple.Create(redScore, blueScore));
+    }
 }

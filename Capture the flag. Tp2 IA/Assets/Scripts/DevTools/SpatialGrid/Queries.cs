@@ -235,6 +235,7 @@ public class Queries : MonoBehaviour
             case ClickPower.StunIfNotHaveFlag:
                 {
                     Debug.Log("STUNSINOTENGOBANDERA");
+                    //Aca hay selec y where RAAAAMAAAA
                     var entities = selected.Select(x => x.GetComponent<Entity>()).Where(x => x != null).Where(x => !x.hasFlag);
                     Debug.Log(entities.Count());
                     foreach (var item in entities)
@@ -245,6 +246,7 @@ public class Queries : MonoBehaviour
                 }
             case ClickPower.Explosion:
                 {
+                    //RAMAAAA ACA ESTA EL AGREGATE QUE ES UN WHERE ENCUBIERTO
                     Debug.Log("EXPLOSION");
                     var entitiesToExplode = selected.Select(x => x.GetComponent<Entity>()).Where(x => x != null).Aggregate(new List<Entity>(), (acum, current) =>
                     {

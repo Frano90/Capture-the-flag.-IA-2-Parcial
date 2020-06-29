@@ -35,7 +35,7 @@ public class CarryFlagToBase_State : Base_State
             Main.instance.gameCotroller.flag.transform.parent = null;
             Main.instance.gameCotroller.flag.ResetPos();
             Main.instance.gameCotroller.flagHolder = null;
-            Main.instance.gameCotroller.OnFlagToBase();
+            Main.instance.gameCotroller.OnFlagToBase(_smOwner);
 
         }
     }

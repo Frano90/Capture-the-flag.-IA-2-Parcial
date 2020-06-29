@@ -143,27 +143,17 @@ public class Entity : MonoBehaviour
         hasFlag = false;
     }
     
-
-    //Mira aca el stun y dsp anda a un estado como el de "protectFlagCarrier". Vas a ver que lo que hago es buscar al que esta cerca del flagcarrier y le hago "entity.stun()"
-    //la idea es esa misma, que con el click recorras una lista de lo que esta cerca y de ahi le hagas cosas en "entity.Sarasa()"
     
     /// <summary>
     /// Les hace un stun
     /// </summary>
     public void Stun()
     {
-        Debug.Log("Stuneado");
         isStunned = true;
         Main.instance.gameCotroller.flagHolder = null;
         hasFlag = false;
         knowsWhereFlagIs = false;
         stunedParticle.Play();
-        //sm.SetState(statesRegistry[Enums.SM_STATES.Stunned]);
-    }
-
-    public void ChangeColour()
-    {
-        
     }
 
     public void Slow()
@@ -178,6 +168,7 @@ public class Entity : MonoBehaviour
         StatusRB(activeRB);
         var direction = transform.position - trans.position;
         rb.AddForce(direction.normalized * 20, ForceMode.Impulse);
+        Stun();
         StartCoroutine(TurnOffRB(true));
     }
 

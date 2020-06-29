@@ -9,7 +9,8 @@ public class Main : MonoBehaviour
 
 
     //Managers
-    public GameController gameCotroller; 
+    public GameController gameCotroller;
+    public GameUI_Manager uiManager; 
     
     // Start is called before the first frame update
     void Awake()
