@@ -103,6 +103,7 @@ public class Queries : MonoBehaviour
         myAnim.SetBool("onClick", false);
     }
 
+    //IA2-P2
     public IEnumerable<GridEntity> Query()
     {
         if (isBox)
@@ -203,6 +204,7 @@ public class Queries : MonoBehaviour
     bool firstSlow = true;
     bool helpBlueTeam;
 
+    //IA2-P2
     void Exec1()
     {
         switch (clickPower)

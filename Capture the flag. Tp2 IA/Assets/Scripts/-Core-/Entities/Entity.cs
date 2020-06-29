@@ -38,6 +38,7 @@ public class Entity : MonoBehaviour
     public bool hasFlag;
     private void Start()
     {
+        //IA2-P2
         SetTeamData();
 
         rb = this.gameObject.GetComponent<Rigidbody>();

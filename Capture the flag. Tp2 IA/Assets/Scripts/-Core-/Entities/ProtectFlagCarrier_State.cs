@@ -51,7 +51,8 @@ public class ProtectFlagCarrier_State : Base_State
     {
         var selected = _gridQueries.Query(_smOwner.transform, new Vector2(_smOwner.lookRange, _smOwner.lookRange));
 
-        //MIRATE ESTE ORDER BY, RAMA!
+        //IA2-P2
+        //MIRATE ESTE ORDER BY, RAMA! 
         return selected
             .Select(x => x.GetComponent<Entity>())
             .Where(x => x != null && x._teamSide != _smOwner._teamSide && x.isStunned == false)
